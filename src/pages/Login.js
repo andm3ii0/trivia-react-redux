@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import fetchToken from '../components/fetchToken';
 
 class Login extends React.Component {
@@ -7,6 +8,7 @@ class Login extends React.Component {
       email: '',
       name: '',
       disabled: true,
+      redirect: false,
     }
 
     validEmail = (email) => /[a-z0-9.]+@[a-z0-9]+\.[a-z]/.test(email);
@@ -24,6 +26,10 @@ class Login extends React.Component {
       });
     }
 
+    toSettings = () => {
+      this.setState({ redirect: true });
+    }
+
     setOnclick = async () => {
       const { history } = this.props;
       const require = await fetchToken();
@@ -33,7 +39,10 @@ class Login extends React.Component {
     }
 
     render() {
-      const { name, email, disabled } = this.state;
+      const { name, email, disabled, redirect } = this.state;
+      if (redirect) {
+        return <Redirect to="/settings" />;
+      }
       return (
         <div>
           <form>
@@ -66,6 +75,13 @@ class Login extends React.Component {
               onClick={ this.setOnclick }
             >
               Play
+            </button>
+            <button
+              data-testid="btn-settings"
+              type="button"
+              onClick={ this.toSettings }
+            >
+              Settings
             </button>
           </form>
         </div>
