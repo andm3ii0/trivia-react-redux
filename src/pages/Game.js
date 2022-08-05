@@ -1,20 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { requestQuestions } from '../redux/actions';
+import Question from '../components/Question';
 
 class Game extends React.Component {
+  state = {
+    currentQuestion: 0,
+  }
+
   componentDidMount = () => {
     const { fetchAPI } = this.props;
     fetchAPI(`https://opentdb.com/api.php?amount=5&token=${localStorage.getItem('token')}`);
   }
 
   render() {
+    const { requestState, questions, requestAPI } = this.props;
+    const { currentQuestion } = this.state;
+    console.log(questions);
+    const requestFailed = 3;
     return (
-      <div><p>pergunta</p></div>
+      <div>
+        { requestState === requestFailed && <Redirect to="/" />}
+        {!requestAPI && <Question questionData={ questions[currentQuestion] } />}
+      </div>
     );
   }
 }
+
+const mapStateToProps = (store) => ({
+  requestState: store.player.requestState,
+  questions: store.player.questions,
+  requestAPI: store.player.requestAPI,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   fetchAPI: (endPoint) => dispatch(requestQuestions(endPoint)),
@@ -22,6 +41,13 @@ const mapDispatchToProps = (dispatch) => ({
 
 Game.propTypes = {
   fetchAPI: PropTypes.func.isRequired,
+  requestState: PropTypes.oneOfType([PropTypes.number]),
+  questions: PropTypes.arrayOf(PropTypes.object),
+  requestAPI: PropTypes.bool.isRequired,
 };
 
-export default connect(null, mapDispatchToProps)(Game);
+Game.defaultProps = {
+  requestState: 0,
+  questions: [],
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Game);
