@@ -18,12 +18,18 @@ class Game extends React.Component {
   render() {
     const { requestState, questions, requestAPI } = this.props;
     const { currentQuestion } = this.state;
+    const questionData = questions[currentQuestion];
     console.log(questions);
     const requestFailed = 3;
     return (
       <div>
         { requestState === requestFailed && <Redirect to="/" />}
-        {!requestAPI && <Question questionData={ questions[currentQuestion] } />}
+        {!requestAPI && <Question
+          category={ questionData.category }
+          question={ questionData.question }
+          correctAnswer={ questionData.correct_answer }
+          incorrectAnswers={ questionData.incorrect_answers }
+        />}
       </div>
     );
   }

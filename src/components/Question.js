@@ -3,17 +3,18 @@ import PropTypes from 'prop-types';
 
 class Question extends React.Component {
   render() {
-    const { questionData: { category,
-      correct_answer: correctAnswer,
+    const {
+      category,
+      correctAnswer,
       question,
-      incorrect_answers: incorrectAnswers } } = this.props;
+      incorrectAnswers } = this.props;
     console.log(category);
     const randomNumber = 0.5;
     const randomArray = [...incorrectAnswers, correctAnswer]
       .sort(() => Math.random() - randomNumber);
     return (
       <div>
-        <p data-testid="question-category">{`${category}`}</p>
+        <p data-testid="question-category">{category}</p>
         <p data-testid="question-text">{question}</p>
         <div data-testid="answer-options">
           {randomArray
@@ -34,11 +35,17 @@ class Question extends React.Component {
 }
 
 Question.propTypes = {
-  questionData: PropTypes.shape({
-    category: PropTypes.string,
-    correct_answer: PropTypes.string,
-    incorrect_answers: PropTypes.arrayOf(PropTypes.string),
-    question: PropTypes.string }).isRequired,
+  category: PropTypes.string,
+  correctAnswer: PropTypes.string,
+  incorrectAnswers: PropTypes.arrayOf(PropTypes.string),
+  question: PropTypes.string,
+};
+
+Question.defaultProps = {
+  category: '',
+  correctAnswer: '',
+  incorrectAnswers: [],
+  question: '',
 };
 
 export default Question;
