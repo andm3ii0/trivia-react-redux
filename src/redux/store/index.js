@@ -8,4 +8,8 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(thunk)),
 );
 
+if (window.Cypress) {
+  window.store = store;
+}
+
 export default store;
