@@ -1,5 +1,7 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import fetchToken from '../components/fetchToken';
 
 class Login extends React.Component {
     state = {
@@ -26,6 +28,14 @@ class Login extends React.Component {
 
     toSettings = () => {
       this.setState({ redirect: true });
+      }
+      
+    setOnclick = async () => {
+      const { history } = this.props;
+      const require = await fetchToken();
+      const { token } = require;
+      await localStorage.setItem('token', token);
+      history.push('/game');
     }
 
     render() {
@@ -62,6 +72,7 @@ class Login extends React.Component {
               data-testid="btn-play"
               type="button"
               disabled={ disabled }
+              onClick={ this.setOnclick }
             >
               Play
             </button>
@@ -77,5 +88,11 @@ class Login extends React.Component {
       );
     }
 }
+
+Login.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 export default Login;
