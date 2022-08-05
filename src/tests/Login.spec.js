@@ -1,4 +1,5 @@
 import { screen } from '@testing-library/dom';
+import { waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import App from '../App';
@@ -49,4 +50,22 @@ describe('Login page', () => {
     userEvent.type(inputEmail, 'teste@email.com');
     expect(button).not.toBeDisabled();
   });
+
+  it('should go to the Game page when clicking the button with the correct login',
+    async () => {
+      const test = renderWithRouterAndRedux(<App />);
+
+      const inputName = screen.getByTestId(inputNameId);
+      const inputEmail = screen.getByTestId(inputEmailId);
+      const button = screen.getByTestId(playButton);
+
+      userEvent.type(inputName, 'Nome Correto');
+      userEvent.type(inputEmail, 'teste@email.com');
+      userEvent.click(button);
+
+      await waitFor(() => {
+        const { pathname } = test.history.location;
+        expect(pathname).toBe('/game');
+      });
+    });
 });
