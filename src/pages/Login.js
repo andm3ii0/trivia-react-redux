@@ -28,8 +28,8 @@ class Login extends React.Component {
 
     toSettings = () => {
       this.setState({ redirect: true });
-      }
-      
+    }
+
     setOnclick = async () => {
       const { history } = this.props;
       const require = await fetchToken();
