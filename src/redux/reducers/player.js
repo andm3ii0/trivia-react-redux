@@ -5,6 +5,7 @@ const INITIAL_STATE = {
   assertions: '',
   score: 0,
   gravatarEmail: '',
+  requestAPI: true,
 };
 
 const player = (state = INITIAL_STATE, action) => {
@@ -12,7 +13,11 @@ const player = (state = INITIAL_STATE, action) => {
   case REQUEST_API:
     return { ...state, requestAPI: true };
   case REQUEST_SUCSSES:
-    return { ...state, questions: action.questions, requestAPI: false };
+    return { ...state,
+      questions: action.questions,
+      requestAPI: false,
+      requestState: action.requestState,
+    };
   default:
     return state;
   }

@@ -11,6 +11,7 @@ const requestAPI = () => ({
 const requestSuccess = (obj) => ({
   type: REQUEST_SUCSSES,
   questions: obj.results,
+  requestState: obj.response_code,
 });
 
 const requestError = () => ({
