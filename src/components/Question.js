@@ -66,6 +66,7 @@ class Question extends React.Component {
             <button
               data-testid="btn-next"
               type="button"
+              className="button-answer"
               onClick={ this.newQuestion }
             >
               Next

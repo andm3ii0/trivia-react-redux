@@ -25,8 +25,12 @@ class Game extends React.Component {
     const { currentQuestion } = this.state;
     const questionData = questions[currentQuestion];
     const requestFailed = 3;
+    const ultimaPergunta = 5;
     if (requestState === requestFailed) {
       return <Redirect to="/" />;
+    }
+    if (currentQuestion === ultimaPergunta) {
+      return <Redirect to="/feedback" />;
     }
     return (
       <div>
