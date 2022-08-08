@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { requestQuestions } from '../redux/actions';
+import Header from '../components/Header';
 
 class Game extends React.Component {
   componentDidMount = () => {
@@ -11,7 +12,10 @@ class Game extends React.Component {
 
   render() {
     return (
-      <div><p>pergunta</p></div>
+      <>
+        <Header />
+        <div><p>Pergunta</p></div>
+      </>
     );
   }
 }
