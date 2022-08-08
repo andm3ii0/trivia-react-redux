@@ -20,11 +20,12 @@ class Game extends React.Component {
     const { requestState, questions, requestAPI } = this.props;
     const { currentQuestion } = this.state;
     const questionData = questions[currentQuestion];
-    console.log(questions);
     const requestFailed = 3;
+    if (requestState === requestFailed) {
+      return <Redirect to="/" />;
+    }
     return (
       <div>
-        { requestState === requestFailed && <Redirect to="/" />}
         <Header />
         {!requestAPI && <Question
           category={ questionData.category }
