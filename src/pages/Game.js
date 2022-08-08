@@ -16,6 +16,10 @@ class Game extends React.Component {
     fetchAPI(`https://opentdb.com/api.php?amount=5&token=${localStorage.getItem('token')}`);
   }
 
+  nextQuestion = () => {
+    this.setState((prevState) => ({ currentQuestion: prevState.currentQuestion + 1 }));
+  }
+
   render() {
     const { requestState, questions, requestAPI } = this.props;
     const { currentQuestion } = this.state;
@@ -33,6 +37,7 @@ class Game extends React.Component {
           correctAnswer={ questionData.correct_answer }
           incorrectAnswers={ questionData.incorrect_answers }
           difficulty={ questionData.difficulty }
+          nextQuestion={ this.nextQuestion }
         />}
       </div>
     );
