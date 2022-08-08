@@ -1,29 +1,29 @@
-.button-answer{
+.button-answer {
+  background-color: black;
   border: 3px solid white;
   border-radius: 5px;
-  background-color: black;
   color: white;
-  margin: 0 5px;
   font-size: 20px;
+  margin: 0 5px;
   padding: 4px 8px;
 }
 
 .correct-answer {
+  background-color: transparent;
   border: 3px solid rgb(6, 240, 15);
   border-radius: 5px;
-  background-color: transparent;
   color: white;
-  margin: 0 5px;
   font-size: 20px;
+  margin: 0 5px;
   padding: 4px 8px;
 }
 
 .wrong-answer {
+  background-color: transparent;
   border: 3px solid red;
   border-radius: 5px;
-  background-color: transparent;
   color: white;
-  margin: 0 5px;
   font-size: 20px;
+  margin: 0 5px;
   padding: 4px 8px;
 }
