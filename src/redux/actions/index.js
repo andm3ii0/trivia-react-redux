@@ -2,6 +2,7 @@ export const FETCH_QUESTIONS = 'FETCH_QUESTIONS';
 export const REQUEST_API = 'REQUEST_API';
 export const REQUEST_SUCSSES = 'REQUEST_SUCSSES';
 export const REQUEST_ERROR = 'REQUEST_ERROR';
+export const USER_LOGIN = 'USER_LOGIN';
 
 const requestAPI = () => ({
   type: REQUEST_API,
@@ -28,3 +29,8 @@ export const requestQuestions = (endPoint) => async (dispatch) => {
     dispatch(requestError());
   }
 };
+
+export const userLoginAction = (state) => ({
+  type: USER_LOGIN,
+  state,
+});

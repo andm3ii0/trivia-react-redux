@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { requestQuestions } from '../redux/actions';
 import Question from '../components/Question';
+import Header from '../components/Header';
 
 class Game extends React.Component {
   state = {
@@ -24,6 +25,7 @@ class Game extends React.Component {
     return (
       <div>
         { requestState === requestFailed && <Redirect to="/" />}
+        <Header />
         {!requestAPI && <Question
           category={ questionData.category }
           question={ questionData.question }

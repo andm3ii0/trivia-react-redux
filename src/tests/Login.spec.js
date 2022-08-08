@@ -9,6 +9,7 @@ describe('Login page', () => {
   const inputNameId = 'input-player-name';
   const inputEmailId = 'input-gravatar-email';
   const playButton = 'btn-play';
+  const settingsButton = 'btn-settings';
 
   it('should render the login form', () => {
     renderWithRouterAndRedux(<App />);
@@ -51,7 +52,20 @@ describe('Login page', () => {
     expect(button).not.toBeDisabled();
   });
 
-  it('should go to the Game page when clicking the button with the correct login',
+  it('should go to the Settings page when clicking the Settings button',
+    () => {
+      const test = renderWithRouterAndRedux(<App />);
+
+      const button = screen.getByTestId(settingsButton);
+      userEvent.click(button);
+
+      const { pathname } = test.history.location;
+      expect(pathname).toBe('/settings');
+
+      expect(screen.getByTestId('settings-title')).toBeDefined();
+    });
+
+  it('should go to the Game page when clicking the Play button with the correct login',
     async () => {
       const test = renderWithRouterAndRedux(<App />);
 

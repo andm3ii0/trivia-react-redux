@@ -1,7 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './question.css';
 
 class Question extends React.Component {
+  state = {
+    avaliable: false,
+  }
+
+  onHandleClick = () => {
+    this.setState({ avaliable: true,
+    });
+  }
+
+  handleClassName = (answer, correctAnswer) => {
+    const { avaliable } = this.state;
+    if (avaliable) {
+      if (answer === correctAnswer) {
+        return 'correct-answer';
+      }
+      return 'wrong-answer';
+    }
+    return 'button-answer';
+  }
+
   render() {
     const {
       category,
@@ -9,6 +30,7 @@ class Question extends React.Component {
       question,
       incorrectAnswers } = this.props;
     console.log(category);
+    const { avaliable } = this.state;
     const randomNumber = 0.5;
     const randomArray = [...incorrectAnswers, correctAnswer]
       .sort(() => Math.random() - randomNumber);
@@ -20,6 +42,10 @@ class Question extends React.Component {
           {randomArray
             .map((answer, index) => (
               <button
+                // className="button-answer"
+                onClick={ this.onHandleClick }
+                disabled={ avaliable }
+                className={ this.handleClassName(answer, correctAnswer) }
                 key={ index }
                 type="button"
                 data-testid={ answer === correctAnswer
