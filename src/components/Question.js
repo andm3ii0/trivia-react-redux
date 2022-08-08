@@ -1,13 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './question.css';
+import { connect } from 'react-redux';
+import { addPointsAction } from '../redux/actions';
 
 class Question extends React.Component {
   state = {
     avaliable: false,
+    difficultyPoints: [{ level: 'hard', value: 3 }, { level: 'medium', value: 2 },
+      { level: 'easy', value: 1 }],
   }
 
-  onHandleClick = () => {
+  onHandleClick = (answer, correctAnswer, difficulty) => {
+    const { difficultyPoints, timer } = this.state;
+    const { dispatch, score } = this.props;
+    const isCorrect = (answer === correctAnswer);
+    const points = difficultyPoints.find((item) => item.level === difficulty);
+    if (isCorrect) {
+      const number = 10;
+      const totalPoints = score + (number + (timer * points.value));
+      dispatch(addPointsAction(totalPoints));
+    }
     this.setState({ avaliable: true,
     });
   }
@@ -28,8 +41,7 @@ class Question extends React.Component {
       category,
       correctAnswer,
       question,
-      incorrectAnswers } = this.props;
-    console.log(category);
+      incorrectAnswers, difficulty } = this.props;
     const { avaliable } = this.state;
     const randomNumber = 0.5;
     const randomArray = [...incorrectAnswers, correctAnswer]
@@ -43,7 +55,9 @@ class Question extends React.Component {
             .map((answer, index) => (
               <button
                 // className="button-answer"
-                onClick={ this.onHandleClick }
+                onClick={ () => {
+                  this.onHandleClick(answer, correctAnswer, difficulty);
+                } }
                 disabled={ avaliable }
                 className={ this.handleClassName(answer, correctAnswer) }
                 key={ index }
@@ -60,11 +74,18 @@ class Question extends React.Component {
   }
 }
 
+const mapStateToProps = (store) => ({
+  score: store.player.score,
+});
+
 Question.propTypes = {
   category: PropTypes.string,
   correctAnswer: PropTypes.string,
   incorrectAnswers: PropTypes.arrayOf(PropTypes.string),
   question: PropTypes.string,
+  difficulty: PropTypes.string,
+  dispatch: PropTypes.func.isRequired,
+  score: PropTypes.number.isRequired,
 };
 
 Question.defaultProps = {
@@ -72,6 +93,7 @@ Question.defaultProps = {
   correctAnswer: '',
   incorrectAnswers: [],
   question: '',
+  difficulty: '',
 };
 
-export default Question;
+export default connect(mapStateToProps)(Question);
