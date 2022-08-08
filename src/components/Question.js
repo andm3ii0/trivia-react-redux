@@ -62,7 +62,7 @@ class Question extends React.Component {
       category,
       correctAnswer,
       question,
-      difficulty} = this.props;
+      difficulty } = this.props;
     const { avaliable, timer } = this.state;
     return (
       <div>
@@ -74,8 +74,8 @@ class Question extends React.Component {
             .map((answer, index) => (
               <button
                 onClick={ () => {
-                this.onHandleClick(answer, correctAnswer, difficulty);
-              } }
+                  this.onHandleClick(answer, correctAnswer, difficulty);
+                } }
                 disabled={ !!(avaliable || timer === 0) }
                 className={ this.handleClassName(answer, correctAnswer) }
                 key={ index }
