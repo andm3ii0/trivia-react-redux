@@ -31,15 +31,12 @@ class Question extends React.Component {
 
   render() {
     const {
+      randomArray,
       category,
       correctAnswer,
-      question,
-      incorrectAnswers } = this.props;
-    console.log(category);
+      question } = this.props;
     const { avaliable } = this.state;
-    const randomNumber = 0.5;
-    const randomArray = [...incorrectAnswers, correctAnswer]
-      .sort(() => Math.random() - randomNumber);
+    console.log(randomArray);
     return (
       <div>
         <p data-testid="question-category">{category}</p>
@@ -48,7 +45,6 @@ class Question extends React.Component {
           {randomArray
             .map((answer, index) => (
               <button
-                // className="button-answer"
                 onClick={ this.onHandleClick }
                 disabled={ avaliable }
                 className={ this.handleClassName(answer, correctAnswer) }
@@ -80,15 +76,14 @@ class Question extends React.Component {
 Question.propTypes = {
   category: PropTypes.string,
   correctAnswer: PropTypes.string,
-  incorrectAnswers: PropTypes.arrayOf(PropTypes.string),
   question: PropTypes.string,
   nextQuestion: PropTypes.func.isRequired,
+  randomArray: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 Question.defaultProps = {
   category: '',
   correctAnswer: '',
-  incorrectAnswers: [],
   question: '',
 };
 

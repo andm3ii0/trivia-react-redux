@@ -21,7 +21,7 @@ class Game extends React.Component {
   }
 
   render() {
-    const { requestState, questions, requestAPI } = this.props;
+    const { requestState, questions, requestAPI, randomArray } = this.props;
     const { currentQuestion } = this.state;
     const questionData = questions[currentQuestion];
     const requestFailed = 3;
@@ -38,6 +38,7 @@ class Game extends React.Component {
         {!requestAPI && <Question
           category={ questionData.category }
           question={ questionData.question }
+          randomArray={ randomArray[currentQuestion] }
           correctAnswer={ questionData.correct_answer }
           incorrectAnswers={ questionData.incorrect_answers }
           nextQuestion={ this.nextQuestion }
@@ -51,6 +52,7 @@ const mapStateToProps = (store) => ({
   requestState: store.player.requestState,
   questions: store.player.questions,
   requestAPI: store.player.requestAPI,
+  randomArray: store.player.randomArray,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -62,6 +64,7 @@ Game.propTypes = {
   requestState: PropTypes.oneOfType([PropTypes.number]),
   questions: PropTypes.arrayOf(PropTypes.object),
   requestAPI: PropTypes.bool.isRequired,
+  randomArray: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 Game.defaultProps = {
