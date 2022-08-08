@@ -25,6 +25,12 @@ class Question extends React.Component {
     });
   }
 
+  newQuestion = () => {
+    const { nextQuestion } = this.props;
+    this.setState({ avaliable: false });
+    nextQuestion();
+  }
+
   handleClassName = (answer, correctAnswer) => {
     const { avaliable } = this.state;
     if (avaliable) {
@@ -69,6 +75,16 @@ class Question extends React.Component {
               </button>
             ))}
         </div>
+        { avaliable
+          && (
+            <button
+              data-testid="btn-next"
+              type="button"
+              onClick={ this.newQuestion }
+            >
+              Next
+            </button>
+          )}
       </div>
     );
   }
@@ -83,9 +99,12 @@ Question.propTypes = {
   correctAnswer: PropTypes.string,
   incorrectAnswers: PropTypes.arrayOf(PropTypes.string),
   question: PropTypes.string,
+
   difficulty: PropTypes.string,
   dispatch: PropTypes.func.isRequired,
   score: PropTypes.number.isRequired,
+
+  nextQuestion: PropTypes.func.isRequired,
 };
 
 Question.defaultProps = {
