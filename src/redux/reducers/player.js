@@ -1,4 +1,4 @@
-import { REQUEST_API, REQUEST_SUCSSES } from '../actions';
+import { REQUEST_API, REQUEST_SUCSSES, ADD_POINTS_SCORE } from '../actions';
 
 const INITIAL_STATE = {
   name: '',
@@ -18,6 +18,11 @@ const player = (state = INITIAL_STATE, action) => {
       randomArray: action.randomArray,
       requestAPI: false,
       requestState: action.requestState,
+    };
+  case ADD_POINTS_SCORE:
+    return {
+      ...state,
+      score: action.points,
     };
   default:
     return state;

@@ -41,6 +41,7 @@ class Game extends React.Component {
           randomArray={ randomArray[currentQuestion] }
           correctAnswer={ questionData.correct_answer }
           incorrectAnswers={ questionData.incorrect_answers }
+          difficulty={ questionData.difficulty }
           nextQuestion={ this.nextQuestion }
         />}
       </div>
