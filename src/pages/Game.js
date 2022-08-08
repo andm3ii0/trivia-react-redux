@@ -36,6 +36,7 @@ class Game extends React.Component {
           question={ questionData.question }
           correctAnswer={ questionData.correct_answer }
           incorrectAnswers={ questionData.incorrect_answers }
+          difficulty={ questionData.difficulty }
           nextQuestion={ this.nextQuestion }
         />}
       </div>

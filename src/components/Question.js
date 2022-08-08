@@ -1,30 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './question.css';
+import { connect } from 'react-redux';
+import { addPointsAction } from '../redux/actions';
 
 class Question extends React.Component {
   state = {
     avaliable: false,
     timer: 30,
-  };
+    difficultyPoints: [{ level: 'hard', value: 3 }, { level: 'medium', value: 2 },
+      { level: 'easy', value: 1 }],
+  }
 
-      time = setInterval(() => {
-        this.setState(({ timer }) => ({ timer: timer - 1 }));
-      }, Number('1000'));
+  time = setInterval(() => {
+    this.setState(({ timer }) => ({ timer: timer - 1 }));
+  }, Number('1000'));
 
-      componentDidMount() {
-        return this.time;
-      }
+  componentDidMount() {
+    return this.time;
+  }
 
-      componentDidUpdate(_, { timer }) {
-        if (timer === 1) clearInterval(this.time);
-      }
+  componentDidUpdate(_, { timer }) {
+    if (timer === 1) clearInterval(this.time);
+  }
 
-  onHandleClick = () => {
+  onHandleClick = (answer, correctAnswer, difficulty) => {
+    const { difficultyPoints, timer } = this.state;
+    const { dispatch, score } = this.props;
+    const isCorrect = (answer === correctAnswer);
+    const points = difficultyPoints.find((item) => item.level === difficulty);
+    if (isCorrect) {
+      const number = 10;
+      const totalPoints = score + (number + (timer * points.value));
+      dispatch(addPointsAction(totalPoints));
+    }
     this.setState({ avaliable: true }, () => {
       clearInterval(this.tempo);
     });
-  };
+  }
 
   newQuestion = () => {
     const { nextQuestion } = this.props;
@@ -44,8 +57,8 @@ class Question extends React.Component {
   };
 
   render() {
-    const { category, correctAnswer, question, incorrectAnswers } = this.props;
-    console.log(category);
+    const { category, correctAnswer, question, incorrectAnswers,
+      difficulty } = this.props;
     const { avaliable, timer } = this.state;
     const randomNumber = 0.5;
     const randomArray = [...incorrectAnswers, correctAnswer].sort(
@@ -60,16 +73,15 @@ class Question extends React.Component {
           {randomArray.map((answer, index) => (
             <button
               // className="button-answer"
-              onClick={ this.onHandleClick }
+              onClick={ () => {
+                this.onHandleClick(answer, correctAnswer, difficulty);
+              } }
               disabled={ !!(avaliable || timer === 0) }
               className={ this.handleClassName(answer, correctAnswer) }
               key={ index }
               type="button"
-              data-testid={
-                answer === correctAnswer
-                  ? 'correct-answer'
-                  : `wrong-answer-${index}`
-              }
+              data-testid={ answer === correctAnswer
+                ? 'correct-answer' : `wrong-answer-${index}` }
             >
               {answer}
             </button>
@@ -90,11 +102,19 @@ class Question extends React.Component {
   }
 }
 
+const mapStateToProps = (store) => ({
+  score: store.player.score,
+});
+
 Question.propTypes = {
   category: PropTypes.string,
   correctAnswer: PropTypes.string,
   incorrectAnswers: PropTypes.arrayOf(PropTypes.string),
   question: PropTypes.string,
+  difficulty: PropTypes.string,
+  dispatch: PropTypes.func.isRequired,
+  score: PropTypes.number.isRequired,
+
   nextQuestion: PropTypes.func.isRequired,
 };
 
@@ -103,6 +123,7 @@ Question.defaultProps = {
   correctAnswer: '',
   incorrectAnswers: [],
   question: '',
+  difficulty: '',
 };
 
-export default Question;
+export default connect(mapStateToProps)(Question);

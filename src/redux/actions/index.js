@@ -3,6 +3,7 @@ export const REQUEST_API = 'REQUEST_API';
 export const REQUEST_SUCSSES = 'REQUEST_SUCSSES';
 export const REQUEST_ERROR = 'REQUEST_ERROR';
 export const USER_LOGIN = 'USER_LOGIN';
+export const ADD_POINTS_SCORE = 'ADD_POINTS_SCORE';
 
 const requestAPI = () => ({
   type: REQUEST_API,
@@ -33,4 +34,9 @@ export const requestQuestions = (endPoint) => async (dispatch) => {
 export const userLoginAction = (state) => ({
   type: USER_LOGIN,
   state,
+});
+
+export const addPointsAction = (points) => ({
+  type: ADD_POINTS_SCORE,
+  points,
 });
