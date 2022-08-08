@@ -21,11 +21,7 @@ class Game extends React.Component {
   }
 
   render() {
-    const { requestState,
-      questions, requestAPI } = this.props;
-
     const { requestState, questions, requestAPI, randomArray } = this.props;
-
     const { currentQuestion } = this.state;
     const questionData = questions[currentQuestion];
     const requestFailed = 3;
