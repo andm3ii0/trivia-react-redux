@@ -7,6 +7,7 @@ import { addPointsAction } from '../redux/actions';
 class Question extends React.Component {
   state = {
     avaliable: false,
+    timer: 1,
     difficultyPoints: [{ level: 'hard', value: 3 }, { level: 'medium', value: 2 },
       { level: 'easy', value: 1 }],
   }
