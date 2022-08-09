@@ -2,7 +2,7 @@ import {
   REQUEST_API,
   REQUEST_SUCSSES,
   ADD_POINTS_SCORE,
-  COUNT_ASSERTIONS,
+  ADD_ASSERTIONS,
 } from '../actions';
 
 const INITIAL_STATE = {
@@ -30,7 +30,7 @@ const player = (state = INITIAL_STATE, action) => {
       ...state,
       score: action.points,
     };
-  case COUNT_ASSERTIONS:
+  case ADD_ASSERTIONS:
     return {
       ...state,
       assertions: action.assertions,

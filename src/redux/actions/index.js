@@ -5,6 +5,7 @@ export const REQUEST_ERROR = 'REQUEST_ERROR';
 export const USER_LOGIN = 'USER_LOGIN';
 export const ADD_POINTS_SCORE = 'ADD_POINTS_SCORE';
 export const COUNT_ASSERTIONS = 'COUNT_ASSERTIONS';
+export const ADD_ASSERTIONS = 'ADD_ASSERTIONS';
 const randomNumber = 0.5;
 
 const requestAPI = () => ({
@@ -46,7 +47,12 @@ export const addPointsAction = (points) => ({
   points,
 });
 
-export const addAssertions = (assertions) => ({
+export const countAssertions = (state) => ({
   type: COUNT_ASSERTIONS,
+  state,
+});
+
+export const addAssertions = (assertions) => ({
+  type: ADD_ASSERTIONS,
   assertions,
 });

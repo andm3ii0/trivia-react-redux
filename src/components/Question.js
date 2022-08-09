@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './question.css';
 import { connect } from 'react-redux';
-import { addPointsAction, addAssertions } from '../redux/actions';
+import { addPointsAction, countAssertions } from '../redux/actions';
 
 class Question extends React.Component {
   state = {
@@ -44,7 +44,7 @@ class Question extends React.Component {
       const number = 10;
       const totalPoints = score + (number + (timer * points.value));
       dispatch(addPointsAction(totalPoints));
-      dispatch(addAssertions(assertions));
+      dispatch(countAssertions(assertions));
       addAssertion();
     }
     this.stopTimer();
