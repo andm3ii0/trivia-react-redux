@@ -37,7 +37,7 @@ class Question extends React.Component {
 
   onHandleClick = (answer, correctAnswer, difficulty) => {
     const { difficultyPoints, timer, assertions } = this.state;
-    const { dispatch, score } = this.props;
+    const { dispatch, score, addAssertion } = this.props;
     const isCorrect = (answer === correctAnswer);
     const points = difficultyPoints.find((item) => item.level === difficulty);
     if (isCorrect) {
@@ -45,6 +45,7 @@ class Question extends React.Component {
       const totalPoints = score + (number + (timer * points.value));
       dispatch(addPointsAction(totalPoints));
       dispatch(countAssertions(assertions));
+      addAssertion();
     }
     this.stopTimer();
   }
@@ -129,7 +130,7 @@ Question.propTypes = {
   difficulty: PropTypes.string,
   dispatch: PropTypes.func.isRequired,
   score: PropTypes.number.isRequired,
-
+  addAssertion: PropTypes.func.isRequired,
   nextQuestion: PropTypes.func.isRequired,
   randomArray: PropTypes.arrayOf(PropTypes.string).isRequired,
 };

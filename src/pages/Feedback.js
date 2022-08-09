@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import PlayAgain from '../components/PlayAgain';
 import BtnRanking from '../components/BtnRanking';
+import Score from '../components/Score';
 
 class Feedback extends React.Component {
   render() {
@@ -15,6 +16,7 @@ class Feedback extends React.Component {
       <>
         <Header />
         <h3 data-testid="feedback-text">{message}</h3>
+        <Score />
         <PlayAgain />
         <BtnRanking history={ history } />
       </>

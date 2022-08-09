@@ -2,13 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { requestQuestions } from '../redux/actions';
+import { addAssertions, requestQuestions } from '../redux/actions';
 import Question from '../components/Question';
 import Header from '../components/Header';
 
 class Game extends React.Component {
   state = {
     currentQuestion: 0,
+    assertions: 0,
   }
 
   componentDidMount = () => {
@@ -18,6 +19,10 @@ class Game extends React.Component {
 
   nextQuestion = () => {
     this.setState((prevState) => ({ currentQuestion: prevState.currentQuestion + 1 }));
+  }
+
+  addAssertion = () => {
+    this.setState((prevState) => ({ assertions: prevState.assertions + 1 }));
   }
 
   render() {
@@ -30,7 +35,8 @@ class Game extends React.Component {
       return <Redirect to="/" />;
     }
     if (currentQuestion === ultimaPergunta) {
-      const { name, email, score } = this.props;
+      const { name, email, score, addAssertionsAction } = this.props;
+      const { assertions } = this.state;
       if (localStorage.getItem('ranking') === null) {
         localStorage.setItem('ranking', JSON.stringify([{ email, score, name }]));
       } else {
@@ -38,6 +44,7 @@ class Game extends React.Component {
         localStorage.setItem('ranking',
           JSON.stringify([...prevStorage, { email, score, name }]));
       }
+      addAssertionsAction(assertions);
       return <Redirect to="/feedback" />;
     }
     return (
@@ -51,6 +58,7 @@ class Game extends React.Component {
           incorrectAnswers={ questionData.incorrect_answers }
           difficulty={ questionData.difficulty }
           nextQuestion={ this.nextQuestion }
+          addAssertion={ this.addAssertion }
         />}
       </div>
     );
@@ -70,6 +78,7 @@ const mapStateToProps = (store) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchAPI: (endPoint) => dispatch(requestQuestions(endPoint)),
+  addAssertionsAction: (assertions) => dispatch(addAssertions(assertions)),
 });
 
 Game.propTypes = {
@@ -81,6 +90,7 @@ Game.propTypes = {
   email: PropTypes.string.isRequired,
   score: PropTypes.number.isRequired,
   randomArray: PropTypes.arrayOf(PropTypes.string),
+  addAssertionsAction: PropTypes.func.isRequired,
 };
 
 Game.defaultProps = {
