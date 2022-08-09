@@ -18,7 +18,7 @@ describe('Game page', () => {
     expect(score.innerHTML).toBe('0');
     expect(img).toHaveAttribute('alt', 'Profile of: Person Name');
   });
-  it('should have specific components in the question', () => {
+  it('should have specific components in the question', async () => {
     const { player } = storePlayer;
     const { randomArray, questions } = player;
     renderWithRouterAndRedux(
@@ -47,13 +47,19 @@ describe('Game page', () => {
     expect(answer3.innerHTML).toBe('Berlin');
     expect(answerCorrect.innerHTML).toBe('Birmingham');
     userEvent.click(answerCorrect);
-    const button = screen.getByTestId('btn-next');
-    expect(button).toBeInTheDocument();
-    expect(answer1).toBeDisabled();
-    expect(answer2).toBeDisabled();
-    expect(answer3).toBeDisabled();
-    expect(answerCorrect).toBeDisabled();
-    expect(button).not.toBeDisabled();
+    await waitFor(() => {
+      const button = screen.getByTestId('btn-next');
+      expect(button).toBeInTheDocument();
+      expect(answer1).toBeDisabled();
+      expect(answer1).toHaveStyle('border: 3px solid red');
+      expect(answer2).toBeDisabled();
+      expect(answer2).toHaveStyle('border: 3px solid red');
+      expect(answer3).toBeDisabled();
+      expect(answer3).toHaveStyle('border: 3px solid red');
+      expect(answerCorrect).toBeDisabled();
+      expect(answerCorrect).toHaveStyle('border: 3px solid rgb(6, 240, 15)');
+      expect(button).not.toBeDisabled();
+    });
   });
   it('should return to the Login page if the token is invalid.', () => {
     const initialState = storeError;
