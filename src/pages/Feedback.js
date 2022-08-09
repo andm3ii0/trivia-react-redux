@@ -7,7 +7,7 @@ class Feedback extends React.Component {
   render() {
     const { assertions } = this.props;
     const condition = 3;
-    const message = (assertions > condition ? 'Well Done!' : 'Could be better...');
+    const message = (assertions >= condition ? 'Well Done!' : 'Could be better...');
 
     return (
       <>
@@ -22,7 +22,7 @@ const mapStateToProps = (state) => ({
 });
 
 Feedback.propTypes = {
-  assertions: PropTypes.string.isRequired,
+  assertions: PropTypes.number.isRequired,
 };
 
 export default connect(mapStateToProps)(Feedback);

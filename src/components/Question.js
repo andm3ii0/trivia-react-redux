@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './question.css';
 import { connect } from 'react-redux';
-import { addPointsAction } from '../redux/actions';
+import { addPointsAction, countAssertions } from '../redux/actions';
 
 class Question extends React.Component {
   state = {
@@ -25,7 +25,7 @@ class Question extends React.Component {
   }
 
   onHandleClick = (answer, correctAnswer, difficulty) => {
-    const { difficultyPoints, timer } = this.state;
+    const { difficultyPoints, timer, assertions } = this.state;
     const { dispatch, score } = this.props;
     const isCorrect = (answer === correctAnswer);
     const points = difficultyPoints.find((item) => item.level === difficulty);
@@ -33,6 +33,7 @@ class Question extends React.Component {
       const number = 10;
       const totalPoints = score + (number + (timer * points.value));
       dispatch(addPointsAction(totalPoints));
+      dispatch(countAssertions(assertions));
     }
     this.setState({ avaliable: true }, () => {
       clearInterval(this.tempo);
@@ -106,6 +107,10 @@ class Question extends React.Component {
 const mapStateToProps = (store) => ({
   score: store.player.score,
 });
+
+// const mapDispatchToProps = (dispatch) => ({
+//   dispatchAssertions: (assertions) => dispatch(assertionsUp(assertions)),
+// });
 
 Question.propTypes = {
   category: PropTypes.string,
