@@ -1,8 +1,8 @@
-import { USER_LOGIN } from '../actions';
+import { COUNT_ASSERTIONS, USER_LOGIN } from '../actions';
 
 const INITIAL_STATE = {
   name: '',
-  assertions: '',
+  assertions: 0,
   gravatarEmail: '',
 };
 
@@ -13,6 +13,11 @@ const loginReducer = (state = INITIAL_STATE, action) => {
       ...state,
       name: action.state.name,
       gravatarEmail: action.state.email,
+    };
+  case COUNT_ASSERTIONS:
+    return {
+      ...state,
+      assertions: state.assertions + 1,
     };
   default:
     return state;

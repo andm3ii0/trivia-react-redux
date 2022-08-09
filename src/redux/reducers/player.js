@@ -2,7 +2,7 @@ import { REQUEST_API, REQUEST_SUCSSES, ADD_POINTS_SCORE } from '../actions';
 
 const INITIAL_STATE = {
   name: '',
-  assertions: '',
+  assertions: 0,
   score: 0,
   gravatarEmail: '',
   requestAPI: true,
