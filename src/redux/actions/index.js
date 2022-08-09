@@ -46,7 +46,7 @@ export const addPointsAction = (points) => ({
   points,
 });
 
-export const countAssertions = (state) => ({
+export const addAssertions = (assertions) => ({
   type: COUNT_ASSERTIONS,
-  state,
+  assertions,
 });

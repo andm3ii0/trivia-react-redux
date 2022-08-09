@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './question.css';
 import { connect } from 'react-redux';
-import { addPointsAction, countAssertions } from '../redux/actions';
+import { addPointsAction, addAssertions } from '../redux/actions';
 
 class Question extends React.Component {
   state = {
@@ -37,14 +37,15 @@ class Question extends React.Component {
 
   onHandleClick = (answer, correctAnswer, difficulty) => {
     const { difficultyPoints, timer, assertions } = this.state;
-    const { dispatch, score } = this.props;
+    const { dispatch, score, addAssertion } = this.props;
     const isCorrect = (answer === correctAnswer);
     const points = difficultyPoints.find((item) => item.level === difficulty);
     if (isCorrect) {
       const number = 10;
       const totalPoints = score + (number + (timer * points.value));
       dispatch(addPointsAction(totalPoints));
-      dispatch(countAssertions(assertions));
+      dispatch(addAssertions(assertions));
+      addAssertion();
     }
     this.stopTimer();
   }
@@ -129,7 +130,7 @@ Question.propTypes = {
   difficulty: PropTypes.string,
   dispatch: PropTypes.func.isRequired,
   score: PropTypes.number.isRequired,
-
+  addAssertion: PropTypes.func.isRequired,
   nextQuestion: PropTypes.func.isRequired,
   randomArray: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
