@@ -4,9 +4,3 @@ import userEvent from '@testing-library/user-event';
 import React from 'react';
 import App from '../App';
 import renderWithRouterAndRedux from './helpers/renderWithRouterAndRedux';
-
-describe('Game page', () => {
-  it('should ', () => {
-
-  });
-});
