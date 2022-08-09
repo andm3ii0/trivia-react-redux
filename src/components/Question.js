@@ -8,20 +8,31 @@ class Question extends React.Component {
   state = {
     avaliable: false,
     timer: 30,
+    time: () => {},
     difficultyPoints: [{ level: 'hard', value: 3 }, { level: 'medium', value: 2 },
       { level: 'easy', value: 1 }],
   }
 
-  time = setInterval(() => {
-    this.setState(({ timer }) => ({ timer: timer - 1 }));
-  }, Number('1000'));
-
   componentDidMount() {
-    return this.time;
+    this.startTimer();
   }
 
   componentDidUpdate(_, { timer }) {
-    if (timer === 1) clearInterval(this.time);
+    if (timer === 1) this.stopTimer();
+  }
+
+  startTimer = () => {
+    this.setState(() => ({
+      time: setInterval(() => {
+        this.setState(({ timer }) => ({ timer: timer - 1 }));
+      }, Number('1000')),
+    }));
+  }
+
+  stopTimer = () => {
+    const { time } = this.state;
+    if (time) clearInterval(time);
+    this.setState({ avaliable: true });
   }
 
   onHandleClick = (answer, correctAnswer, difficulty) => {
@@ -34,15 +45,14 @@ class Question extends React.Component {
       const totalPoints = score + (number + (timer * points.value));
       dispatch(addPointsAction(totalPoints));
     }
-    this.setState({ avaliable: true }, () => {
-      clearInterval(this.tempo);
-    });
+    this.stopTimer();
   }
 
   newQuestion = () => {
     const { nextQuestion } = this.props;
-    this.setState({ avaliable: false });
+    this.setState({ avaliable: false, timer: 30 });
     nextQuestion();
+    this.startTimer();
   }
 
   handleClassName = (answer, correctAnswer) => {
