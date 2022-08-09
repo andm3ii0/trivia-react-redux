@@ -7,7 +7,7 @@ class BtnRanking extends React.Component {
     return (
       <button
         type="button"
-        ata-testid="btn-ranking"
+        data-testid="btn-ranking"
         onClick={ () => history.push('/ranking') }
       >
         Ranking

@@ -67,7 +67,7 @@ const mapStateToProps = (store) => ({
 
   name: store.loginReducer.name,
   email: store.loginReducer.gravatarEmail,
-  score: store.loginReducer.score,
+  score: store.player.score,
   randomArray: store.player.randomArray,
 });
 

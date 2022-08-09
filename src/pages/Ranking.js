@@ -1,5 +1,6 @@
 import React from 'react';
 import md5 from 'crypto-js/md5';
+import Home from '../components/Home';
 
 class Ranking extends React.Component {
   state = {
@@ -16,7 +17,7 @@ class Ranking extends React.Component {
       <div>
         <p data-testid="ranking-title">Ranking</p>
         <ol>
-          { ranking.map((item, index) => (
+          { ranking.sort((a, b) => b.score - a.score).map((item, index) => (
             <li key={ index }>
               <img src={ `https://www.gravatar.com/avatar/${md5(item.email).toString()}` } alt={ item.name } />
               <p data-testid={ `player-name-${index}` }>{item.name}</p>
@@ -24,6 +25,7 @@ class Ranking extends React.Component {
             </li>
           )) }
         </ol>
+        <Home />
       </div>
     );
   }
