@@ -6,7 +6,7 @@ import App from '../App';
 import renderWithRouterAndRedux from './helpers/renderWithRouterAndRedux';
 
 describe('Game page', () => {
-  it('should ', () => {
+  it('should have a header', () => {
 
   });
 });
