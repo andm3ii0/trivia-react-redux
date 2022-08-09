@@ -15,6 +15,7 @@ const player = (state = INITIAL_STATE, action) => {
   case REQUEST_SUCSSES:
     return { ...state,
       questions: action.questions,
+      score: 0,
       randomArray: action.randomArray,
       requestAPI: false,
       requestState: action.requestState,

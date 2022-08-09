@@ -30,6 +30,17 @@ class Game extends React.Component {
       return <Redirect to="/" />;
     }
     if (currentQuestion === ultimaPergunta) {
+      const { name, email, score } = this.props;
+      console.log(localStorage.getItem('ranking'));
+      if (localStorage.getItem('ranking') === null) {
+        console.log(localStorage.getItem('ranking'));
+        localStorage.setItem('ranking', JSON.stringify([{ email, score, name }]));
+      } else {
+        const prevStorage = JSON.parse(localStorage.getItem('ranking'));
+        localStorage.setItem('ranking',
+          JSON.stringify([...prevStorage, { email, score, name }]));
+      }
+
       return <Redirect to="/feedback" />;
     }
     return (
@@ -53,6 +64,10 @@ const mapStateToProps = (store) => ({
   requestState: store.player.requestState,
   questions: store.player.questions,
   requestAPI: store.player.requestAPI,
+
+  name: store.loginReducer.name,
+  email: store.loginReducer.gravatarEmail,
+  score: store.player.score,
   randomArray: store.player.randomArray,
 });
 
@@ -65,6 +80,9 @@ Game.propTypes = {
   requestState: PropTypes.oneOfType([PropTypes.number]),
   questions: PropTypes.arrayOf(PropTypes.object),
   requestAPI: PropTypes.bool.isRequired,
+  name: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  score: PropTypes.number.isRequired,
   randomArray: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
