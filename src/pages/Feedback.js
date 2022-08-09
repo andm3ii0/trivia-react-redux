@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import PlayAgain from '../components/PlayAgain';
+import BtnRanking from '../components/BtnRankin';
 
 class Feedback extends React.Component {
   render() {
@@ -15,6 +16,7 @@ class Feedback extends React.Component {
         <Header />
         <h3 data-testid="feedback-text">{message}</h3>
         <PlayAgain />
+        <BtnRanking />
       </>
     );
   }
