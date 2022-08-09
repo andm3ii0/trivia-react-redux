@@ -83,11 +83,13 @@ Game.propTypes = {
   name: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   score: PropTypes.number.isRequired,
-  randomArray: PropTypes.arrayOf(PropTypes.string).isRequired,
+  randomArray: PropTypes.arrayOf(PropTypes.string),
 };
 
 Game.defaultProps = {
   requestState: 0,
   questions: [],
+  randomArray: [],
 };
+
 export default connect(mapStateToProps, mapDispatchToProps)(Game);
