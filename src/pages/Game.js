@@ -31,16 +31,13 @@ class Game extends React.Component {
     }
     if (currentQuestion === ultimaPergunta) {
       const { name, email, score } = this.props;
-      console.log(localStorage.getItem('ranking'));
       if (localStorage.getItem('ranking') === null) {
-        console.log(localStorage.getItem('ranking'));
         localStorage.setItem('ranking', JSON.stringify([{ email, score, name }]));
       } else {
         const prevStorage = JSON.parse(localStorage.getItem('ranking'));
         localStorage.setItem('ranking',
           JSON.stringify([...prevStorage, { email, score, name }]));
       }
-
       return <Redirect to="/feedback" />;
     }
     return (

@@ -111,6 +111,6 @@ export const storePlayer = {
 
 export const storeError = {
   player: {
-    requestState: 0,
+    requestState: 3,
   },
 };
