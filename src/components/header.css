@@ -1,9 +1,10 @@
+/* stylelint-disable font-family-name-quotes */
 .header-game {
-  display: flex;
   align-items: center;
-  justify-content: space-around;
   background-color: #100720;
+  display: flex;
   height: 100px;
+  justify-content: space-around;
 }
 
 .logo-header {
@@ -15,29 +16,29 @@
 }
 
 .perfil-header {
-  display: flex;
   align-items: center;
+  display: flex;
   gap: 20px;
 }
 
 .perfil-info {
-  display: flex; 
   align-items: center;
+  display: flex;
   gap: 10px;
 }
 
 .img-header {
+  border: 2px solid white;
   border-radius: 50%;
   width: 50px;
-  border: 2px solid white;
 }
 
 .name-header {
   color: white;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat' , sans-serif;
 }
 
 .score-header {
   color: white;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat' , sans-serif;
 }

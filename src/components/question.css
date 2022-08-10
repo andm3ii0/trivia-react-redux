@@ -1,68 +1,67 @@
+/* stylelint-disable font-family-name-quotes */
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 .question-content {
   background-color: rgb(12, 6, 24);
   border-radius: 25px;
-  width: 500px;
+  box-shadow: 5px 5px 10px #222121;
   height: 700px;
   margin: 75px auto;
-  box-shadow: 5px 5px 10px #222121;
+  width: 500px;
 }
 
-.timer,
-.category,
-.question-text {
-  font-family: 'Montserrat', sans-serif;
-  color: rgb(255, 255, 255);
+.timer, .category, .question-text {
+  color: white;
+  font-family: 'Montserrat' , sans-serif;
   font-weight: 500;
 }
 
 .timer {
   background-color: rgb(183, 158, 235);
-  color: rgb(12, 6, 24);
-  width: 100%;
-  height: 50px;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  margin: 0;
-  text-align: center;
-  padding-top: 15px;
-  font-weight: 700;
+  color: rgb(12, 6, 24);
   font-size: 20px;
+  font-weight: 700;
+  height: 50px;
+  margin: 0;
+  padding-top: 15px;
+  text-align: center;
+  width: 100%;
 }
 
 .category {
   background-color: rgb(183, 158, 235);
-  padding: 3px 7px;
   border-radius: 7px;
   color: rgb(12, 6, 24);
-  margin: 50px;
   font-weight: 600;
+  margin: 50px;
+  padding: 3px 7px;
 }
 
 .question-text {
-  text-align: center;
   font-size: 25px;
   font-weight: 400;
   padding: 10px 30px 30px;
+  text-align: center;
 }
 
 .header-question-card {
+  align-items: center;
   display: flex;
   flex-flow: column nowrap;
-  align-items: center;
 }
 
 .answer-options {
+  align-items: stretch;
   display: flex;
   flex-flow: column nowrap;
-  align-items: stretch;
-  padding: 0px 10px;
   gap: 10px;
+  padding: 0 10px;
 }
 
 .button-answer {
@@ -72,7 +71,7 @@
   color: white;
   font-size: 20px;
   margin: 0 5px;
-  padding: 8px 8px;
+  padding: 8px;
 }
 
 .button-next {
@@ -86,7 +85,7 @@
   color: white;
   font-size: 20px;
   margin: 0 5px;
-  padding: 8px 8px;
+  padding: 8px;
 }
 
 .wrong-answer {
@@ -96,5 +95,5 @@
   color: white;
   font-size: 20px;
   margin: 0 5px;
-  padding: 8px 8px;
+  padding: 8px;
 }
