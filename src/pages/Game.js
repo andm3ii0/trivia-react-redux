@@ -37,16 +37,13 @@ class Game extends React.Component {
     if (currentQuestion === ultimaPergunta) {
       const { name, email, score, addAssertionsAction } = this.props;
       const { assertions } = this.state;
-      console.log(localStorage.getItem('ranking'));
       if (localStorage.getItem('ranking') === null) {
-        console.log(localStorage.getItem('ranking'));
         localStorage.setItem('ranking', JSON.stringify([{ email, score, name }]));
       } else {
         const prevStorage = JSON.parse(localStorage.getItem('ranking'));
         localStorage.setItem('ranking',
           JSON.stringify([...prevStorage, { email, score, name }]));
       }
-
       addAssertionsAction(assertions);
       return <Redirect to="/feedback" />;
     }
@@ -92,12 +89,14 @@ Game.propTypes = {
   name: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   score: PropTypes.number.isRequired,
-  randomArray: PropTypes.arrayOf(PropTypes.string).isRequired,
+  randomArray: PropTypes.arrayOf(PropTypes.string),
   addAssertionsAction: PropTypes.func.isRequired,
 };
 
 Game.defaultProps = {
   requestState: 0,
   questions: [],
+  randomArray: [],
 };
+
 export default connect(mapStateToProps, mapDispatchToProps)(Game);
