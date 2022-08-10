@@ -50,7 +50,8 @@ class Game extends React.Component {
     return (
       <div>
         <Header />
-        {!requestAPI && <Question
+        {!requestAPI
+        && <Question
           category={ questionData.category }
           question={ questionData.question }
           randomArray={ randomArray[currentQuestion] }
