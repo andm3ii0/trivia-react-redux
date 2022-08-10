@@ -1,63 +1,64 @@
-*{
-  padding: 0;
-  margin: 0;
+/* stylelint-disable font-family-name-quotes */
+* {
   box-sizing: border-box;
   color: white;
+  margin: 0;
+  padding: 0;
 }
 
 .feedback-content {
-  background-color: #F0D9FF ;
+  background-color: #f0d9ff;
   height: 100vh;
 }
 
 .feedback-card {
   background-color: #0c0618;
   border-radius: 25px;
-  width: 500px;
+  box-shadow: 5px 5px 10px #222121;
   height: 700px;
   margin: 75px auto;
-  box-shadow: 5px 5px 10px #222121;
+  width: 500px;
 }
 
 .feedback-text {
   column-rule: white;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
+  font-family: 'Montserrat' , sans-serif;
   font-size: 35px;
-  text-align: center;
+  font-weight: 700;
   padding: 30px 0;
+  text-align: center;
 }
 
 .feedback-image {
-  width: 250px;
   margin: 0 125px;
+  width: 250px;
 }
 
 .score {
-  display: flex;
-  flex-flow: column nowrap;
   align-items: center;
-  justify-content: space-evenly;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
-  font-size: 20px;
   border: 3px solid rgb(183, 158, 235);
   border-radius: 10px;
-  width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  font-family: 'Montserrat' , sans-serif;
+  font-size: 20px;
+  font-weight: 500;
   height: 200px;
+  justify-content: space-evenly;
   margin: 0 auto;
+  width: 200px;
 }
 
 .button-play-again, .button-ranking {
-  width: 100px;
-  font-size: 16px;
-  font-weight: 600;
+  background-color: rgb(202, 206, 218);
   border: none;
   border-radius: 5px;
-  padding: 3px 6px;
-  background-color: rgb(202, 206, 218);
-  font-family: 'Montserrat', sans-serif;
   color: #282c34;
   cursor: pointer;
+  font-family: 'Montserrat' , sans-serif;
+  font-size: 16px;
+  font-weight: 600;
   margin: 30px 0;
+  padding: 3px 6px;
+  width: 100px;
 }
