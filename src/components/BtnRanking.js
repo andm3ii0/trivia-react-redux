@@ -6,6 +6,7 @@ class BtnRanking extends React.Component {
     const { history } = this.props;
     return (
       <button
+        className="button-ranking"
         type="button"
         data-testid="btn-ranking"
         onClick={ () => history.push('/ranking') }

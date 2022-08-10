@@ -6,7 +6,7 @@ class Score extends React.Component {
   render() {
     const { score, assertions } = this.props;
     return (
-      <div>
+      <div className="score">
         <p>
           Placar final:
           {' '}

@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom';
 import { addAssertions, requestQuestions } from '../redux/actions';
 import Question from '../components/Question';
 import Header from '../components/Header';
+import './game.css';
 
 class Game extends React.Component {
   state = {
@@ -48,7 +49,7 @@ class Game extends React.Component {
       return <Redirect to="/feedback" />;
     }
     return (
-      <div>
+      <div className="game-content">
         <Header />
         {!requestAPI
         && <Question

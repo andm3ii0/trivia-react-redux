@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import fetchToken from '../components/fetchToken';
 import { userLoginAction } from '../redux/actions';
+import './login.css';
+import logo from '../images/13.png';
+import '../App.css';
 
 class Login extends React.Component {
     state = {
@@ -48,46 +51,53 @@ class Login extends React.Component {
         return <Redirect to="/settings" />;
       }
       return (
-        <div>
-          <form>
-            <label htmlFor="name">
-              player name:
-              <input
-                name="name"
-                value={ name }
-                data-testid="input-player-name"
-                type="text"
-                id="name"
-                onChange={ this.setOnChange }
-              />
-            </label>
-            <label htmlFor="email">
-              gravadar email:
-              <input
-                name="email"
-                value={ email }
-                data-testid="input-gravatar-email"
-                type="email"
-                id="email"
-                onChange={ this.setOnChange }
-              />
-            </label>
-            <button
-              data-testid="btn-play"
-              type="button"
-              disabled={ disabled }
-              onClick={ this.setOnclick }
-            >
-              Play
-            </button>
-            <button
-              data-testid="btn-settings"
-              type="button"
-              onClick={ this.toSettings }
-            >
-              Settings
-            </button>
-          </form>
+        <div className="App">
+          <header className="App-header">
+            <img src={ logo } className="App-logo" alt="logo" />
+            <form className="form-login">
+              <label className="input-name" htmlFor="name">
+                Name:
+                <input
+                  name="name"
+                  value={ name }
+                  data-testid="input-player-name"
+                  type="text"
+                  id="name"
+                  onChange={ this.setOnChange }
+                />
+              </label>
+              <label className="input-email" htmlFor="email">
+                E-mail:
+                <input
+                  name="email"
+                  value={ email }
+                  data-testid="input-gravatar-email"
+                  type="email"
+                  id="email"
+                  onChange={ this.setOnChange }
+                />
+              </label>
+              <div className="buttons">
+                <button
+                  className="button-play"
+                  data-testid="btn-play"
+                  type="button"
+                  disabled={ disabled }
+                  onClick={ this.setOnclick }
+                >
+                  Play
+                </button>
+                <button
+                  className="button-settings"
+                  data-testid="btn-settings"
+                  type="button"
+                  onClick={ this.toSettings }
+                >
+                  Settings
+                </button>
+              </div>
+            </form>
+          </header>
         </div>
       );
     }

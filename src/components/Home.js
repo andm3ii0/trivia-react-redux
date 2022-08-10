@@ -20,6 +20,7 @@ class Home extends React.Component {
     }
     return (
       <button
+        className="button-home"
         type="button"
         data-testid="btn-go-home"
         onClick={ this.toHome }

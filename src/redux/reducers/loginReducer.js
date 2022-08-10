@@ -11,6 +11,7 @@ const loginReducer = (state = INITIAL_STATE, action) => {
   case USER_LOGIN:
     return {
       ...state,
+      assertions: 0,
       name: action.state.name,
       gravatarEmail: action.state.email,
     };

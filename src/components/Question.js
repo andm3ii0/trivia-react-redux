@@ -77,39 +77,48 @@ class Question extends React.Component {
       difficulty } = this.props;
     const { avaliable, timer } = this.state;
     return (
-      <div>
-        <p>{timer}</p>
-        <p data-testid="question-category">{category}</p>
-        <p data-testid="question-text">{question}</p>
-        <div data-testid="answer-options">
-          {randomArray
-            .map((answer, index) => (
-              <button
-                onClick={ () => {
-                  this.onHandleClick(answer, correctAnswer, difficulty);
-                } }
-                disabled={ !!(avaliable || timer === 0) }
-                className={ this.handleClassName(answer, correctAnswer) }
-                key={ index }
-                type="button"
-                data-testid={ answer === correctAnswer
-                  ? 'correct-answer' : `wrong-answer-${index}` }
-              >
-                {answer}
-              </button>
-            ))}
-        </div>
-        { avaliable
+      <div className="question">
+        <div className="question-content">
+          <div className="header-question-card">
+            <p className="timer">
+              Tempo:
+              {' '}
+              {timer}
+            </p>
+            <p className="category" data-testid="question-category">{category}</p>
+          </div>
+          <p className="question-text" data-testid="question-text">{question}</p>
+          <div className="answer-options" data-testid="answer-options">
+            {randomArray
+              .map((answer, index) => (
+                <button
+                  onClick={ () => {
+                    this.onHandleClick(answer, correctAnswer, difficulty);
+                  } }
+                  disabled={ !!(avaliable || timer === 0) }
+                  className={ this.handleClassName(answer, correctAnswer) }
+                  key={ index }
+                  type="button"
+                  data-testid={ answer === correctAnswer
+                    ? 'correct-answer' : `wrong-answer-${index}` }
+                >
+                  {answer}
+                </button>
+              ))}
+            { avaliable
           && (
             <button
               data-testid="btn-next"
               type="button"
-              className="button-answer"
+              className="button-answer button-next"
               onClick={ this.newQuestion }
             >
               Next
             </button>
           )}
+          </div>
+
+        </div>
       </div>
     );
   }

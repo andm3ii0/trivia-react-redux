@@ -20,6 +20,7 @@ class PlayAgain extends React.Component {
     }
     return (
       <button
+        className="button-play-again"
         type="button"
         data-testid="btn-play-again"
         onClick={ this.playAgain }

@@ -1,0 +1,43 @@
+.header-game {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #100720;
+  height: 100px;
+}
+
+.logo-header {
+  height: 60px;
+}
+
+.logo-2 {
+  height: 100%;
+}
+
+.perfil-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.perfil-info {
+  display: flex; 
+  align-items: center;
+  gap: 10px;
+}
+
+.img-header {
+  border-radius: 50%;
+  width: 50px;
+  border: 2px solid white;
+}
+
+.name-header {
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.score-header {
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
