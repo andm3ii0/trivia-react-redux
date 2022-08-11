@@ -14,8 +14,10 @@ class Game extends React.Component {
   }
 
   componentDidMount = () => {
-    const { fetchAPI } = this.props;
-    fetchAPI(`https://opentdb.com/api.php?amount=5&token=${localStorage.getItem('token')}`);
+    const { fetchAPI, type, category, diff } = this.props;
+    const URL = (`https://opentdb.com/api.php?amount=5${diff !== 'any' ? `&difficulty=${diff}` : ''}${category !== 'any' ? `&category=${category}` : ''}${type !== 'any' ? `&type=${type}` : ''}&token=${localStorage.getItem('token')}`);
+    fetchAPI(URL);
+    console.log(URL);
   }
 
   nextQuestion = () => {
@@ -76,6 +78,10 @@ const mapStateToProps = (store) => ({
   email: store.loginReducer.gravatarEmail,
   score: store.player.score,
   randomArray: store.player.randomArray,
+
+  type: store.player.type,
+  diff: store.player.diff,
+  category: store.player.category,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -93,12 +99,18 @@ Game.propTypes = {
   score: PropTypes.number.isRequired,
   randomArray: PropTypes.arrayOf(PropTypes.string),
   addAssertionsAction: PropTypes.func.isRequired,
+  type: PropTypes.string,
+  diff: PropTypes.string,
+  category: PropTypes.string,
 };
 
 Game.defaultProps = {
   requestState: 0,
   questions: [],
   randomArray: [],
+  diff: 'any',
+  category: 'any',
+  type: 'any',
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Game);

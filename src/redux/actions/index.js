@@ -6,6 +6,7 @@ export const USER_LOGIN = 'USER_LOGIN';
 export const ADD_POINTS_SCORE = 'ADD_POINTS_SCORE';
 export const COUNT_ASSERTIONS = 'COUNT_ASSERTIONS';
 export const ADD_ASSERTIONS = 'ADD_ASSERTIONS';
+export const SET_SETTINGS = 'SET_SETTINGS';
 const randomNumber = 0.5;
 
 const requestAPI = () => ({
@@ -21,8 +22,9 @@ const requestSuccess = (obj) => ({
     ...question.incorrect_answers].sort(() => Math.random() - randomNumber)),
 });
 
-const requestError = () => ({
+const requestError = (error) => ({
   type: REQUEST_ERROR,
+  error,
 });
 
 export const requestQuestions = (endPoint) => async (dispatch) => {
@@ -33,9 +35,14 @@ export const requestQuestions = (endPoint) => async (dispatch) => {
     console.log(data);
     dispatch(requestSuccess(data));
   } catch (error) {
-    dispatch(requestError());
+    dispatch(requestError(error));
   }
 };
+
+export const setSettings = (obj) => ({
+  type: SET_SETTINGS,
+  obj,
+});
 
 export const userLoginAction = (state) => ({
   type: USER_LOGIN,

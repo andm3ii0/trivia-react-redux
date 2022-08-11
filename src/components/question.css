@@ -6,7 +6,7 @@
 }
 
 .question-content {
-  background-color: rgb(12, 6, 24);
+  background-color: #25253B;
   border-radius: 25px;
   box-shadow: 5px 5px 10px #222121;
   height: 700px;
@@ -21,10 +21,10 @@
 }
 
 .timer {
-  background-color: rgb(183, 158, 235);
+  background-color: #0c0618;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  color: rgb(12, 6, 24);
+  color: #fff;
   font-size: 20px;
   font-weight: 700;
   height: 50px;
@@ -35,9 +35,9 @@
 }
 
 .category {
-  background-color: rgb(183, 158, 235);
+  background-color: #E2E2E2;
   border-radius: 7px;
-  color: rgb(12, 6, 24);
+  color: #0c0618;
   font-weight: 600;
   margin: 50px;
   padding: 3px 7px;
@@ -66,7 +66,7 @@
 
 .button-answer {
   background-color: transparent;
-  border: 3px solid rgb(183, 158, 235);
+  border: 3px solid #E2E2E2;
   border-radius: 5px;
   color: white;
   font-size: 20px;

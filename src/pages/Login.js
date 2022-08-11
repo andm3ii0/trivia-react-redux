@@ -1,19 +1,19 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import fetchToken from '../components/fetchToken';
 import { userLoginAction } from '../redux/actions';
 import './login.css';
-import logo from '../images/13.png';
+import logo from '../images/logoLogin.png';
 import '../App.css';
+import Settings from './Settings';
 
 class Login extends React.Component {
     state = {
       email: '',
       name: '',
       disabled: true,
-      redirect: false,
+      settings: false,
     }
 
     validEmail = (email) => /[a-z0-9.]+@[a-z0-9]+\.[a-z]/.test(email);
@@ -32,7 +32,11 @@ class Login extends React.Component {
     }
 
     toSettings = () => {
-      this.setState({ redirect: true });
+      this.setState({ settings: true });
+    }
+
+    closeSettings = () => {
+      this.setState({ settings: false });
     }
 
     setOnclick = async () => {
@@ -46,10 +50,7 @@ class Login extends React.Component {
     }
 
     render() {
-      const { name, email, disabled, redirect } = this.state;
-      if (redirect) {
-        return <Redirect to="/settings" />;
-      }
+      const { name, email, disabled, settings } = this.state;
       return (
         <div className="App">
           <header className="App-header">
@@ -97,6 +98,9 @@ class Login extends React.Component {
                 </button>
               </div>
             </form>
+            {settings && <Settings
+              closeSettings={ this.closeSettings }
+            />}
           </header>
         </div>
       );

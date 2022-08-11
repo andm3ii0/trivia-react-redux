@@ -1,5 +1,5 @@
 .ranking {
-  background-color: #F0D9FF;
+  background-color: #E2E2E2;
   height: 100vh;
   display: flex;
   flex-flow: column nowrap;
@@ -18,7 +18,7 @@
 .ranking-list {
   display: flex;
   flex-flow: column nowrap;
-  background-color: #0c0618;
+  background-color: #25253B;
   border-radius: 25px;
   width: 500px;
   height: 700px;
@@ -58,11 +58,12 @@ ol p {
   width: 150px;
   border: none;
   border-radius: 7px;
-  background-color: #100720;
+  background-color: #25253B;
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   font-size: 20px;
   margin: 0 auto;
+  cursor: pointer;
 }
 
 ol::-webkit-scrollbar {
@@ -71,17 +72,17 @@ ol::-webkit-scrollbar {
 }
 
 ol::-webkit-scrollbar-track {
-  background: #0c0618;
+  background: #25253B;
   /* color of the tracking area */
   border-top-right-radius: 25px;
   border-bottom-right-radius: 25px;
 }
 
 ol::-webkit-scrollbar-thumb {
-  background-color: #F0D9FF;
+  background-color: #E2E2E2;
   /* color of the scroll thumb */
   border-radius: 25px;
   /* roundness of the scroll thumb */
-  border: 5px solid #0c0618;
+  border: 5px solid #25253B;
   /* creates padding around scroll thumb */
 }

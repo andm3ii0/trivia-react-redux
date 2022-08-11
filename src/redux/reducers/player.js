@@ -3,6 +3,7 @@ import {
   REQUEST_SUCSSES,
   ADD_POINTS_SCORE,
   ADD_ASSERTIONS,
+  SET_SETTINGS,
 } from '../actions';
 
 const INITIAL_STATE = {
@@ -11,6 +12,9 @@ const INITIAL_STATE = {
   score: 0,
   gravatarEmail: '',
   requestAPI: true,
+  type: 'any',
+  diff: 'any',
+  category: 'any',
 };
 
 const player = (state = INITIAL_STATE, action) => {
@@ -34,6 +38,13 @@ const player = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       assertions: action.assertions,
+    };
+  case SET_SETTINGS:
+    return {
+      ...state,
+      type: action.obj.type,
+      diff: action.obj.diff,
+      category: action.obj.category,
     };
   default:
     return state;

@@ -1,7 +1,7 @@
 /* stylelint-disable font-family-name-quotes */
 .form-login {
   align-items: center;
-  background: rgba(69, 76, 92, 0.5);
+  background: #0c0618;
   border-radius: 20px;
   box-shadow: 9px 9px 8px rgba(0, 0, 0, 0.25);
   display: flex;
@@ -24,7 +24,10 @@
   border: none;
   border-radius: 5px;
   color: black;
-  padding: 3px 10px;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
 }
 
 .buttons {
@@ -40,6 +43,7 @@
   color: #282c34;
   cursor: pointer;
   font-family: 'Montserrat' , sans-serif;
+  font-weight: 600;
   padding: 3px 6px;
   width: 70px;
 }

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import md5 from 'crypto-js/md5';
 import PropTypes from 'prop-types';
 import './header.css';
-import logo from '../images/16.png';
+import logo from '../images/logoheader.png';
 
 class Header extends React.Component {
   render() {
