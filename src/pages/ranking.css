@@ -1,0 +1,87 @@
+.ranking {
+  background-color: #F0D9FF;
+  height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.ranking-title {
+  background-color: #100720;
+  height: 100px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  text-align: center;
+  padding-top: 25px;
+}
+
+.ranking-list {
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: #0c0618;
+  border-radius: 25px;
+  width: 500px;
+  height: 700px;
+  margin: 75px auto;
+  box-shadow: 5px 5px 10px #222121;
+  overflow: scroll;
+  overflow-x: hidden;
+  padding: 20px 45px;
+  gap: 20px;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.list-perfil {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+ol img {
+  border: 2px solid white;
+  border-radius: 50%;
+  width: 50px;
+}
+
+ol p {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
+.button-home {
+  padding: 7px 10px;
+  width: 150px;
+  border: none;
+  border-radius: 7px;
+  background-color: #100720;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  margin: 0 auto;
+}
+
+ol::-webkit-scrollbar {
+  width: 20px;
+  /* width of the entire scrollbar */
+}
+
+ol::-webkit-scrollbar-track {
+  background: #0c0618;
+  /* color of the tracking area */
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+ol::-webkit-scrollbar-thumb {
+  background-color: #F0D9FF;
+  /* color of the scroll thumb */
+  border-radius: 25px;
+  /* roundness of the scroll thumb */
+  border: 5px solid #0c0618;
+  /* creates padding around scroll thumb */
+}
