@@ -1,55 +1,54 @@
+/* stylelint-disable font-family-name-quotes */
 .settings-card {
+  backdrop-filter: blur(10px);
   background-color: rgba(128, 128, 128, 0.1);
+  border: 1px solid rgb(75, 75, 75);
+  border-radius: 20px;
+  height: 600px;
+  padding-top: 30px;
   position: absolute;
   top: 240px;
   width: 500px;
-  height: 600px;
-  padding-top: 30px;
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgb(75, 75, 75);
 }
 
 .settings-card h2 {
-  font-family: 'Montserrat', sans-serif;
-  color: #E2E2E2;
-  font-weight: 700;
+  color: #e2e2e2;
+  font-family: 'Montserrat' , sans-serif;
   font-size: 50px;
+  font-weight: 700;
   margin-bottom: 30px;
 }
 
 .config-card {
   background-color: rgba(69, 76, 92, 0.9);
-  width: 350px;
-  height: 400px;
+  border-radius: 15px;
   display: flex;
   flex-flow: column nowrap;
   gap: 30px;
-  padding: 25px 30px 0;
+  height: 400px;
   margin: 0 auto;
-  border-radius: 15px;
+  padding: 25px 30px 0;
+  width: 350px;
 }
 
-.input-category,
-.input-type,
-.input-diff {
+.input-category, .input-type, .input-diff {
+  align-items: stretch;
   display: flex;
   flex-flow: column nowrap;
-  align-items: stretch;
-  text-align: left;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
+  font-family: 'Montserrat' , sans-serif;
   font-size: 20px;
+  font-weight: 600;
   gap: 10px;
+  text-align: left;
 }
 
 label select {
-  height: 35px;
   border: none;
   border-radius: 5px;
   color: black;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat' , sans-serif;
   font-size: 14px;
+  height: 35px;
   padding: 0 10px;
 }
 
@@ -59,14 +58,14 @@ option {
 
 .button {
   align-self: center;
-  width: 75px;
-  padding: 3px 7px;
-  color: black;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  font-size: 16px;
   border: none;
   border-radius: 5px;
-  margin-top: 10px;
+  color: black;
   cursor: pointer;
+  font-family: 'Montserrat' , sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 10px;
+  padding: 3px 7px;
+  width: 75px;
 }

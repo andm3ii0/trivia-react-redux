@@ -24,10 +24,10 @@
   border: none;
   border-radius: 5px;
   color: black;
-  padding: 5px 10px;
+  font-family: 'Montserrat' , sans-serif;
   font-size: 14px;
-  font-family: 'Montserrat', sans-serif;
   font-weight: 600;
+  padding: 5px 10px;
 }
 
 .buttons {

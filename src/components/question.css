@@ -6,7 +6,7 @@
 }
 
 .question-content {
-  background-color: #25253B;
+  background-color: #25253b;
   border-radius: 25px;
   box-shadow: 5px 5px 10px #222121;
   height: 700px;
@@ -24,7 +24,7 @@
   background-color: #0c0618;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  color: #fff;
+  color: white;
   font-size: 20px;
   font-weight: 700;
   height: 50px;
@@ -35,7 +35,7 @@
 }
 
 .category {
-  background-color: #E2E2E2;
+  background-color: #e2e2e2;
   border-radius: 7px;
   color: #0c0618;
   font-weight: 600;
@@ -66,7 +66,7 @@
 
 .button-answer {
   background-color: transparent;
-  border: 3px solid #E2E2E2;
+  border: 3px solid #e2e2e2;
   border-radius: 5px;
   color: white;
   font-size: 20px;

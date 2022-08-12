@@ -7,7 +7,7 @@
 }
 
 .feedback-content {
-  background-color: #E2E2E2;
+  background-color: #e2e2e2;
   height: 100vh;
 }
 
@@ -35,7 +35,7 @@
 
 .score {
   align-items: center;
-  border: 3px solid #E2E2E2;
+  border: 3px solid #e2e2e2;
   border-radius: 10px;
   display: flex;
   flex-flow: column nowrap;
@@ -49,7 +49,7 @@
 }
 
 .button-play-again, .button-ranking {
-  background-color: #E2E2E2;
+  background-color: #e2e2e2;
   border: none;
   border-radius: 5px;
   color: #282c34;
