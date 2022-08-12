@@ -1,44 +1,45 @@
+/* stylelint-disable font-family-name-quotes */
 .ranking {
-  background-color: #E2E2E2;
-  height: 100vh;
+  background-color: #e2e2e2;
   display: flex;
   flex-flow: column nowrap;
+  height: 100vh;
 }
 
 .ranking-title {
   background-color: #100720;
-  height: 100px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
+  font-family: 'Montserrat' , sans-serif;
   font-size: 40px;
-  text-align: center;
+  font-weight: 700;
+  height: 100px;
   padding-top: 25px;
+  text-align: center;
 }
 
 .ranking-list {
+  background-color: #25253b;
+  border-radius: 25px;
+  box-shadow: 5px 5px 10px #222121;
   display: flex;
   flex-flow: column nowrap;
-  background-color: #25253B;
-  border-radius: 25px;
-  width: 500px;
+  gap: 20px;
   height: 700px;
   margin: 75px auto;
-  box-shadow: 5px 5px 10px #222121;
   overflow: scroll;
   overflow-x: hidden;
   padding: 20px 45px;
-  gap: 20px;
+  width: 500px;
 }
 
 li {
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: space-between;
 }
 
 .list-perfil {
-  display: flex;
   align-items: center;
+  display: flex;
   gap: 10px;
 }
 
@@ -49,40 +50,45 @@ ol img {
 }
 
 ol p {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat' , sans-serif;
   font-weight: 600;
 }
 
 .button-home {
-  padding: 7px 10px;
-  width: 150px;
+  background-color: #25253b;
   border: none;
   border-radius: 7px;
-  background-color: #25253B;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  font-size: 20px;
-  margin: 0 auto;
   cursor: pointer;
+  font-family: 'Montserrat' , sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 auto;
+  padding: 7px 10px;
+  width: 150px;
 }
 
 ol::-webkit-scrollbar {
   width: 20px;
+
   /* width of the entire scrollbar */
 }
 
 ol::-webkit-scrollbar-track {
-  background: #25253B;
+  background: #25253b;
+  border-bottom-right-radius: 25px;
+
   /* color of the tracking area */
   border-top-right-radius: 25px;
-  border-bottom-right-radius: 25px;
 }
 
 ol::-webkit-scrollbar-thumb {
-  background-color: #E2E2E2;
+  background-color: #e2e2e2;
+
+  /* roundness of the scroll thumb */
+  border: 5px solid #25253b;
+
   /* color of the scroll thumb */
   border-radius: 25px;
-  /* roundness of the scroll thumb */
-  border: 5px solid #25253B;
+
   /* creates padding around scroll thumb */
 }
